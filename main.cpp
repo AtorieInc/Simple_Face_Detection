@@ -34,5 +34,13 @@ int main() {
             Point p2((faces[i].x + faces[i].height), (faces[i].y + faces[i].width));
             rectangle(img, p1, p2, Scalar(0, 0, 255), 2, 8, 0)
         }
+
+        imshow("FACES", img);
+        if(waitKey(10) == 27) {
+            cout << "Escape has been pressed. stopping..." << endl;
+            break;
+        }
     }
+
+    return 0;
 }

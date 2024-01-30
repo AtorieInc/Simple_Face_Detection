@@ -7,5 +7,16 @@ using namespace std;
 using namespace cv;
 
 int main() {
+    CascadeClassifier faceDetection;
+
+    if(!faceDetection.load("/home/nstg/opencv_build/opencv/data/haarcascades/haarcascade_frontalface_default.xml")) {
+        cout << "File not found [404]" << endl;
+        exit(0);
+    }
+    VideoCapture cap(0);
+
+    string winName = "WebCam Record";
+    namedWindow(winName);
+
     
 }

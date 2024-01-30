@@ -18,5 +18,21 @@ int main() {
     string winName = "WebCam Record";
     namedWindow(winName);
 
-    
+    while(true) {
+        Mat img;
+        bool success = cap.read(img);
+        if(success == false) {
+            cout << "Video camera is disconnected" << endl;
+            cin.get(); //Wiat for any key press
+            break;
+        }
+        vector<Rect> faces;
+        faceDetection.detectMultiScale(img, faces); //detects faces
+
+        for(int i = 0; i < faces.size(); i ++) {
+            Point p1(faces[i].x, faces[i].y);
+            Point p2((faces[i].x + faces[i].height), (faces[i].y + faces[i].width));
+            rectangle(img, p1, p2, Scalar(0, 0, 255), 2, 8, 0)
+        }
+    }
 }
